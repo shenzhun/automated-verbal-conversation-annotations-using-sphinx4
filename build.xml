@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ant file for sphinx4 project -->
+<!-- includes="sphinx4/spoken/english/evaluation/**" -->
+
+<project name="sphinx4-spoken-english-evaluation" default="run" basedir=".">
+	    <description>Builds, tests, and runs verbal conversation annotations using sphinx4.</description>
+	    <property name="src_dir" value="src"/>
+            <property name="build_dir" value="bld"/>
+            <property name="classes_dir" value="${build_dir}"/>
+            <property name="lib_dir" value="lib"/>
+            <property name="bin_dir" value="bin"/>
+
+            <path id="libs">
+                  <pathelement path="${classes_dir}"/>
+                  <pathelement location="${lib_dir}/sphinx4.jar"/>
+                  <pathelement location="${lib_dir}/jsapi.jar"/>
+                  <pathelement location="${lib_dir}/tags.jar"/>
+                  <pathelement location="${lib_dir}/js.jar"/>
+                  <pathelement location="${lib_dir}/junit-4.4.jar"/>
+            </path>
+
+            <path id="jar.classpath">
+                  <pathelement path="${basedir}/${bin_dir}/annotation4conv.jar"/>
+            </path>
+            
+	    <target name="init">
+		    <mkdir dir="${build_dir}"/>
+            </target>
+
+	    <target name="compile" depends="init">
+                    <javac debug="true"
+                           listfiles="true"
+                           includeantruntime="false"
+                           srcdir="${src_dir}"
+                           destdir="${classes_dir}"
+                           includes="sphinx4/conversation/annotation/**">
+                           <classpath refid="libs"/>
+                    </javac>
+	    </target>
+            
+	    <target name="build" depends="compile">
+                    <mkdir dir="${bin_dir}"/>
+                    <copy file="${src_dir}/sphinx4/conversation/annotation/annotation4conv.config.xml"
+                          todir="${classes_dir}/sphinx4/conversation/annotation/"/>
+                    <copy file="${src_dir}/sphinx4/conversation/annotation/annotation4conv.gram"
+                          todir="${classes_dir}/sphinx4/conversation/annotation/"/>
+                    <jar destfile="${bin_dir}/annotation4conv.jar"
+                         manifest="${src_dir}/sphinx4/conversation/annotation/annotation4conv.Manifest"
+                         basedir="${classes_dir}"
+                         includes="sphinx4/conversation/annotation/**"
+                         compress="true"/>
+            </target>
+
+	    <target name="run" depends="build">
+                    <java jar="${bin_dir}/annotation4conv.jar" fork="True"/>
+            </target> 
+
+            <target name="clean" depends="run">
+                    <delete dir="${build_dir}"/>
+                    <delete dir="${bin_dir}"/>
+            </target>
+</project>
