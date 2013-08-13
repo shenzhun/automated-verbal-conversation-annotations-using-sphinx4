@@ -38,7 +38,7 @@ public class Annotation4conv {
             System.exit(1);
         }
         
-        System.out.println("Loading...");
+        System.out.println("Listening for letters and numbers");
         // loop the recognition until the programm exits.
         while (true) {
             System.out.println("Start speaking. Press Ctrl-C to quit.\n");
