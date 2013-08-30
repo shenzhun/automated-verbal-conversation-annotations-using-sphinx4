@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- ant file for sphinx4 project -->
-<!-- includes="sphinx4/spoken/english/evaluation/**" -->
+<!-- includes="/sphinx4/conversation/annotation/**" -->
 
-<project name="sphinx4-spoken-english-evaluation" default="run" basedir=".">
+<project name="verbal-conversation-recognition-using-sphinx4" default="run" basedir=".">
 	    <description>Builds, tests, and runs verbal conversation annotations using sphinx4.</description>
 	    <property name="src_dir" value="src"/>
             <property name="build_dir" value="bld"/>
@@ -51,12 +51,4 @@
                          compress="true"/>
             </target>
 
-	    <target name="run" depends="build">
-                    <java jar="${bin_dir}/annotation4conv.jar" fork="True"/>
-            </target> 
-
-            <target name="clean" depends="run">
-                    <delete dir="${build_dir}"/>
-                    <delete dir="${bin_dir}"/>
-            </target>
 </project>
