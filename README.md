@@ -44,3 +44,7 @@ src/
             ├── Annotation4conv.java
             └── annotation4conv.Manifest
 </code></pre>
+
+Text processing
+---------------
+Using simple rules to extracte the extracted sentences.
