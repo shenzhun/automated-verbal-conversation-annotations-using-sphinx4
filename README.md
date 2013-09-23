@@ -1,7 +1,7 @@
-verbal-conversation-recognition-using-sphinx4
-=======================================================
+train language model for sphinx4 command recognition system
+============================================================
 
-Use Python and the open source Sphinx-4 speech-recognition package to capture letters and numbers from spoken conversations.
+Training language model using CMU oneline LMtool, then use Python and the open source Sphinx-4 speech-recognition package to implement the command recognition system and recognize the commands.
 
 
 Installing Sphinx-4
