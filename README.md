@@ -1,4 +1,4 @@
-train language model for sphinx4 command recognition system
+building commands recognition system using CMU sphinx4
 ============================================================
 
 Training language model using CMU oneline LMtool, then use Python and the open source Sphinx-4 speech-recognition package to implement the command recognition system and recognize the commands.
